@@ -19,6 +19,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   changeMemberPhoto(photoUrl: string) {
+    console.log(photoUrl);
     this.photoUrl.next(photoUrl);
   }
 
@@ -31,6 +32,7 @@ export class AuthService {
           localStorage.setItem('user', JSON.stringify(user.user));
           this.decodedToken = this.jwtHelper.decodeToken(user.token);
           this.currentUser = user.user;
+          this.changeMemberPhoto(this.currentUser.photoUrl);
           console.log(this.decodedToken);
         }
       })
