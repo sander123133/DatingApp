@@ -40,6 +40,7 @@ export class MemberEditComponent implements OnInit {
     this.userService.updateUser(this.auth.decodedToken.nameid, this.user)
     .subscribe(next => {
       this.alertify.succes('Profile updated successfully');
+      console.log(this.user);
       this.editForm.reset(this.user);
     }, error => {
       this.alertify.error(error);
